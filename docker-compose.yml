@@ -2,7 +2,7 @@ version: '3'
 
 services:
     mysql:
-        container_name: mtmr_mysql
+        container_name: news_mysql
         image: mysql:5.7
         ports:
             - "3306:3306"
@@ -17,6 +17,7 @@ services:
             - ./mysql/init/:/docker-entrypoint-initdb.d
 
     api:
+        container_name: news_api
         build: ./api
         ports:
             - 8888:8888
