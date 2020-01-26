@@ -20,23 +20,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# テーブルのダンプ train_line_jr
+# テーブルのダンプ train_jr_groups
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `train_line_jr`;
+DROP TABLE IF EXISTS `train_jr_groups`;
 
-CREATE TABLE `train_line_jr` (
+CREATE TABLE `train_jr_groups` (
+  `id`        INT AUTO_INCREMENT COMMENT '路線ID',
   `line_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路線名(オリジナル)',
   `line_name_hira` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路線名(ひらがな)',
   `line_name_kana` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路線名(かな)',
   `line_group` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路線グループ',
-  PRIMARY KEY (`line_name`)
+  `created_at` timestamp not null default current_timestamp,
+  `updated_at` timestamp not null default current_timestamp on update current_timestamp,
+  PRIMARY KEY (`id`,`line_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='電車路線情報';
 
-LOCK TABLES `train_line_jr` WRITE;
-/*!40000 ALTER TABLE `train_line_jr` DISABLE KEYS */;
+LOCK TABLES `train_jr_groups` WRITE;
+/*!40000 ALTER TABLE `train_jr_groups` DISABLE KEYS */;
 
-INSERT INTO `train_line_jr` (`line_name`, `line_name_hira`, `line_name_kana`, `line_group`)
+INSERT INTO `train_jr_groups` (`line_name`, `line_name_hira`, `line_name_kana`, `line_group`)
 VALUES
 	('上越線','じょうえつせん','ジョウエツセン','direction_tohoku'),
 	('上野東京ライン','うえのとうきょうらいん','ウエノトウキョウライン','direction_chokutsu'),
@@ -79,7 +82,7 @@ VALUES
 	('鶴見線','つるみせん','ツルミセン','direction_tokaido'),
 	('鹿島線','かしません','カシマセン','direction_soubu');
 
-/*!40000 ALTER TABLE `train_line_jr` ENABLE KEYS */;
+/*!40000 ALTER TABLE `train_jr_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
