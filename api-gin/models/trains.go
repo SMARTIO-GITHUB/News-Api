@@ -6,11 +6,11 @@ import (
 )
 
 type TrainJrGroupsResponse struct {
-	ID            int    `json:"id"`
-    LineName      string `json:"line_name"`
-    LineNameHira  string `json:"line_name_hira"`
-	LineNameKana  string `json:"line_name_kana"`
-	LineGroup     string `json:"line_group"`
+	Id            int    `json:"id"`
+    LineName      string `json:"lineName"`
+    LineNameHira  string `json:"lineNameHira"`
+	LineNameKana  string `json:"lineNameKana"`
+	LineGroup     string `json:"lineGroup"`
 }
 
 func GetTrainID(id int) (TrainJrGroupsResponse, error){
@@ -19,14 +19,14 @@ func GetTrainID(id int) (TrainJrGroupsResponse, error){
 	if err != nil {
 		return TrainJrGroupsResponse{}, nil
 	}
-	train := setTrainReponse(t)
+	train := setTrainResponse(t)
     return train, nil
 }
 
 
-func setTrainReponse(t entity.TrainJrGroups) TrainJrGroupsResponse {
+func setTrainResponse(t entity.TrainJrGroups) TrainJrGroupsResponse {
     train := TrainJrGroupsResponse{}
-    train.ID = t.Id
+    train.Id = t.Id
 	train.LineName = t.LineName
 	train.LineNameHira = t.LineNameHira
 	train.LineNameKana = t.LineNameKana
