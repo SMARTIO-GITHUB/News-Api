@@ -30,14 +30,14 @@ services:
         #    sh ./wait-for-it.sh news_mysql owner mtmr-data go run main.go
 
     swagger-editor:
+        container_name: news_swagger-editor
         image: swaggerapi/swagger-editor
-        container_name: "swagger-editor"
         ports:
             - "8081:8080"
 
     swagger-ui:
+        container_name: news_swagger-ui
         image: swaggerapi/swagger-ui
-        container_name: "swagger-ui"
         ports:
             - "8082:8080"
         volumes:
