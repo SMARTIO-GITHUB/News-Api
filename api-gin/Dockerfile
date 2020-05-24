@@ -15,3 +15,5 @@ RUN go get -u github.com/jinzhu/gorm/dialects/mysql
 RUN go get -u github.com/PuerkitoBio/goquery
 RUN go get -u github.com/gin-gonic/gin
 RUN go get -u github.com/gin-contrib/cors
+
+CMD ["sh", "./start_app.sh"]

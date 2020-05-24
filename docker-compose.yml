@@ -13,21 +13,20 @@ services:
             MYSQL_DATABASE: mtmr-bot
         volumes:
             # - ./db-data:/var/lib/mysql
-            - ./mysql/my.cnf:/etc/mysql/my.cnf
-            - ./mysql/init/:/docker-entrypoint-initdb.d
+            - ./mysql/my.cnf:/etc/mysql/my.cnf:ro
+            - ./mysql/init/:/docker-entrypoint-initdb.d:ro
+            - ./mysql/log/:/var/log/mysql:ro
 
     api:
         container_name: news_api-gin
         build: ./api-gin
+        depends_on:
+            - db-mysql
         ports:
             - 8080:8080
         volumes:
             - ./api-gin:/go/src/bot-api
         stdin_open: true # ←を追加
-        depends_on:
-            - 'db-mysql'
-        #command:
-        #    sh ./wait-for-it.sh news_mysql owner mtmr-data go run main.go
 
     swagger-editor:
         container_name: news_swagger-editor
